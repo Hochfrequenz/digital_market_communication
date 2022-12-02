@@ -1,4 +1,4 @@
-# Digitale Marktkommunikation
+# Digitalisierte Marktkommunikation
 
 Übersicht über ausgewählte Libraries und Tools mit denen Hochfrequenz eine echte Digitalisierung der Marktkommunikation in der deutschen Energiewirtschaft vorantreibt
 

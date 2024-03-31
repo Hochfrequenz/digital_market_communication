@@ -9,7 +9,7 @@ Die Spezifikationen und Regeln, denen die Marktkommunikation der deutschen Energ
 - Technische Dokumente liegen allgemein nur im PDF- oder Wordformat vor und sind nicht maschinenlesbar
 - Message Implementation Guides (MIG) und Anwendungshandbücher (AHB) sind weder selbst- noch zueinander konsistent:
   - Feld- und Strukturnamen in MIG und AHB stimmen nicht überein
-  - Es gibt keinen direkt Weg, eine Zeile aus dem AHB im MIG wiederzufinden (z.b. über eindeutige IDs)
+  - Es gibt keinen direkten Weg, eine Zeile aus dem AHB im MIG wiederzufinden (z.b. über eindeutige IDs)
 - Vermeintlich boolsche Logik folgt keiner boolschen Logik
 - Entscheidungsbäume (EBD) sind keine Bäume sondern nur Tabellen
 - Änderungshistorien sind unvollständig und schwer verständlich
@@ -19,7 +19,7 @@ Hochfrequenz entwickelt Tools, die diese Mängel adressieren. Dieses Repository 
 
 ## Übersicht
 
-Die öffentlichen 🌍 Tools und Libraries unterliegen in der Regel der MIT-Lizenz und sind gut dokumentiert.
+Die öffentlichen 🌍 Tools und Libraries unterliegen in der Regel der MIT- oder GPL-Lizenz und sind gut dokumentiert.
 Bei Interesse an den nicht-öffentlichen/privaten 🔒 Repositories, bitte eine Nachricht an info (at) hochfrequenz.de oder [@JoschaMetze](https://github.com/JoschaMetze) schicken.
 
 <!-- ORDER BY Name ASC -->
@@ -28,7 +28,7 @@ Bei Interesse an den nicht-öffentlichen/privaten 🔒 Repositories, bitte eine 
 | --------------------------------------------------------------------------------------------------------------------------- | --- | ------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | [ahbicht](https://github.com/Hochfrequenz/ahbicht/) 🦅                                                                      | 🌍  | AHBs          | Parser und Evaluationsframework für Ausdrücke der Form `Muss [1] U ([2] O [3])[901] U [543]`                     | Python ([lark](https://github.com/lark-parser/lark))                           |
 | [ahbicht-functions](https://github.com/Hochfrequenz/ahbicht-functions)                                                      | 🔒  | AHBs          | Serverless Backend, das AHBicht Features via REST verfügbar macht                                                | Python (Azure Functions)                                                       |
-| [ahbicht-functions-frontend](https://github.com/Hochfrequenz/ahbicht-functions-frontend/)                                   | 🔒  | AHBs          | Visualisierung von AHB-Expressions                                                                               | Typescript ([d3.js](https://d3js.org/))                                        |
+| [ahahnb](https://github.com/Hochfrequenz/ahbicht-functions-frontend/)                                   | 🔒  | AHBs          | Visualisierung von mit Ahbicht geparsten AHB-Expressions                                                                               | Typescript ([d3.js](https://d3js.org/))                                        |
 | [edi_energy_scraper](https://github.com/Hochfrequenz/edi_energy_scraper)                                                    | 🌍  | edi-energy.de | automatisierter Download von Dokumenten auf edi-energy.de                                                        | Python ([Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/))      |
 | [edi_energy_mirror](https://github.com/Hochfrequenz/edi_energy_mirror)                                                      | 🌍  | edi-energy.de | git-basierte, automatisierte Versionierung der Dokumente auf edi-energy.de                                       |                                                                                |
 | [EDILibrary](https://github.com/Hochfrequenz/EDILibrary)                                                                    | 🌍  | AHBs & MIGs   | Parser und Template-Enginge für EDIFACT-Nachrichten                                                              | C#                                                                             |

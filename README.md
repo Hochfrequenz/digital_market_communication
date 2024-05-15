@@ -9,7 +9,7 @@ Die Spezifikationen und Regeln, denen die Marktkommunikation der deutschen Energ
 - Technische Dokumente liegen allgemein nur im PDF- oder Wordformat vor und sind nicht maschinenlesbar
 - Message Implementation Guides (MIG) und Anwendungshandbücher (AHB) sind weder selbst- noch zueinander konsistent:
   - Feld- und Strukturnamen in MIG und AHB stimmen nicht überein
-  - Es gibt keinen direkten Weg, eine Zeile aus dem AHB im MIG wiederzufinden (z.b. über eindeutige IDs)
+  - Es gab lange keinen direkten Weg, eine Zeile aus dem AHB im MIG wiederzufinden (z.b. über eindeutige IDs); Das ändert sich mit Oktober 2024🎉
 - Vermeintlich boolsche Logik folgt keiner boolschen Logik
 - Entscheidungsbäume (EBD) sind keine Bäume sondern nur Tabellen
 - Änderungshistorien sind unvollständig und schwer verständlich

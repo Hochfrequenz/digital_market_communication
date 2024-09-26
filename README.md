@@ -48,7 +48,9 @@ Bei Interesse an den nicht-öffentlichen/privaten 🔒 Repositories, bitte eine 
 | [machine-readable_message-implementation-guide](https://github.com/Hochfrequenz/machine-readable_message-implementation-guide)            | 🌍  | MIGs          | Daten-Repo: Alle MIGs, maschinenlesbar in verschiedenen Formaten                                 | migmose                                                                              |
 | [kohlr_AHB_i](https://github.com/Hochfrequenz/kohlrahbi) 🥬                                                                   | 🌍  | AHBs          | Scraping-Library für PDF- und DOCX-Anwendungshandbücher                      | Python ([python-docx](https://github.com/python-openxml/python-docx))          |
 | [MIG_mose](https://github.com/Hochfrequenz/migmose)                                                                  | 🌍  | MIGs          | Scraping-Library für PDF- und DOCX-Message Implementation Guides                      | Python ([python-docx](https://github.com/python-openxml/python-docx))          |
-| 🆕 [fundamend](https://github.com/Hochfrequenz/xml-fundamend-python)| 🌍  | MIG & AHBs | Python Wrapper um das neue (2024) XML-basierte BDEW-Datenmodell für MIGs und AHBs | Python |         
+| [fundamend](https://github.com/Hochfrequenz/xml-fundamend-python)| 🌍  | MIG & AHBs | Python Wrapper um das neue (2024) XML-basierte BDEW-Datenmodell für MIGs und AHBs | Python |
+| 🆕 [malo-ident-python-models](https://github.com/Hochfrequenz/malo-ident-python-models)| 🌍  | MaLo Identifikation API | Autogenerierte Datenmodelle für die neue MaLo-ID API | Python |
+| [id-generator](https://github.com/Hochfrequenz/malo-id-generator)| 🌍  | MaLo / MeLo / NeLo / SR / TR | Autogenerierte zufällige IDs für Testzwecke | Go | 
 | [mako.bee]() 🐝                                                                                                             | 🔒  | MaKo allg.    | Backend zur Orchestrierung von Marktkommunikationsprozessen in Micro-Service Landschaften                        | C# ([ELSA](https://github.com/elsa-workflows/elsa-core))                       |
 
 ## Hochfrequenz

@@ -53,6 +53,7 @@ Bei Interesse an den nicht-öffentlichen/privaten 🔒 Repositories, bitte eine 
 | [fundamend](https://github.com/Hochfrequenz/xml-fundamend-python)| 🌍  | MIG & AHBs | Python Wrapper um das neue (2024) XML-basierte BDEW-Datenmodell für MIGs und AHBs | Python |
 | 🆕 [malo-ident-python-models](https://github.com/Hochfrequenz/malo-ident-python-models)| 🌍  | MaLo Identifikation API | Autogenerierte Datenmodelle für die neue MaLo-ID API | Python |
 | 🆕 [malo-ident-net-models](https://github.com/Hochfrequenz/malo-ident-net-models)| 🌍  | MaLo Identifikation API | Datenmodelle für die neue MaLo-ID API | C# |
+| 🆕 [verzeichnisdienst-python-models](https://github.com/Hochfrequenz/verzeichnisdienst-python-models)| 🌍  | Verzeichnisdienst API | Autogenerierte Datenmodelle für die Verzeichnisdienst API | Python |
 | [id-generator](https://github.com/Hochfrequenz/malo-id-generator)| 🌍  | MaLo / MeLo / NeLo / SR / TR | Autogenerierte zufällige IDs für Testzwecke | Go | 
 | [mako.bee]() 🐝                                                                                                             | 🔒  | MaKo allg.    | Backend zur Orchestrierung von Marktkommunikationsprozessen in Micro-Service Landschaften                        | C# ([ELSA](https://github.com/elsa-workflows/elsa-core))                       |
 

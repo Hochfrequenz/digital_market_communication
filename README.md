@@ -106,14 +106,19 @@ flowchart LR
     %% ── Services & Backends ──
     ahbicht_fn[[ahbicht-functions]]:::service
     transformer[[transformer.bee 🐝]]:::service
+    wanna_bee[[wanna.bee]]:::service
     mako_bee[[mako.bee 🐝]]:::service
     fk_fn[[fristenkalender-functions]]:::service
 
     %% ── Libraries & Clients ──
     ahbicht[ahbicht 🦅]:::lib
+    edi_lib[EDILibrary]:::lib
+    bo4e_net[BO4E-dotnet]:::lib
     tbc_net[TransformerBeeClient.NET]:::lib
     tbc_py[TransformerBeeClient.py]:::lib
+    tbc_ts[TransformerBeeClient.ts]:::lib
     ahbicht_client[AhbichtClient.NET]:::lib
+    malo_mapper[MaLoIdentBo4eMapper]:::lib
     bdew_dt[bdew-datetimes]:::lib
     fk_gen[fristenkalender-generator]:::lib
 
@@ -126,6 +131,7 @@ flowchart LR
     ahahnb{{bedingungsbaum.hochfrequenz.de}}:::frontend
     ebd_fe{{ebd.hochfrequenz.de}}:::frontend
     fk_fe{{fristenkalender.hochfrequenz.de}}:::frontend
+    mn_dolm{{marktnachrichten-dolmetscher}}:::frontend
 
     %% ── ID Generators (free-floating) ──
     subgraph id_gen[ID Generators · malo-id-generator]
@@ -158,9 +164,9 @@ flowchart LR
     rebdhuhn --> mr_ebd
     mr_ebd -->|git submodule| ebd_fe
 
-    %% AHB Processing (archived kohlrahbi path)
-    mirror -.->|"kohlrahbi 🥬 (archived)"| mr_ahb
-    mr_ahb -.->|"ahlbatross 🪿"| ahb_diffs
+    %% AHB Processing (no longer in automated pipeline)
+    mirror -.->|"kohlrahbi 🥬 (manual, no pipeline)"| mr_ahb
+    mr_ahb -.->|"ahlbatross 🪿 (dead end)"| ahb_diffs
 
     %% XML → SQLite → Consumers
     xml_migs -->|fundamend| sqlite_db
@@ -172,15 +178,33 @@ flowchart LR
     ahbicht_fn -->|HTTP| ahahnb
     ahbicht_client -->|HTTP| ahbicht_fn
 
+    %% Wanna.bee
+    xml_migs --> wanna_bee
+    ahbicht -->|used internally| wanna_bee
+    tbc_py --> wanna_bee
+    wanna_bee -.->|potential| mako_bee
+
     %% Transformer.bee
     xml_migs --> transformer
     edifact_tpl --> transformer
+    edi_lib -->|used internally| transformer
+    bo4e_net --> transformer
     tbc_net -->|HTTP| transformer
     tbc_py -->|HTTP| transformer
+    tbc_ts -->|HTTP| transformer
+
+    %% Marktnachrichten-Dolmetscher
+    tbc_ts --> mn_dolm
 
     %% Mako.bee
+    bo4e_net --> mako_bee
     tbc_net --> mako_bee
+    malo_mapper --> mako_bee
     partners <--> mako_bee
+
+    %% MaLo Ident → BO4E mapping
+    malo_net --> malo_mapper
+    malo_mapper --> bo4e_net
 
     %% MCP Servers
     sqlite_db --> mcp_mako
@@ -199,9 +223,6 @@ flowchart LR
     %% Potential Future Connections
     ahbicht_client -.->|potential future| transformer
     ahbicht_client -.->|potential future| mako_bee
-
-    %% malo-ident-net-models → mako-service API
-    malo_net -.-> mako_bee
 ```
 
 ## Hochfrequenz

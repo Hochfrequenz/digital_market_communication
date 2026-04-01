@@ -52,7 +52,9 @@ Bei Interesse an den nicht-öffentlichen/privaten 🔒 Repositories, bitte eine 
 | 🆕 [malo-ident-net-models](https://github.com/Hochfrequenz/malo-ident-net-models)| 🌍  | MaLo Identifikation API | Datenmodelle für die neue MaLo-ID API | C# |
 | 🆕 [verzeichnisdienst-python-models](https://github.com/Hochfrequenz/verzeichnisdienst-python-models)| 🌍  | Verzeichnisdienst API | Autogenerierte Datenmodelle für die Verzeichnisdienst API | Python |
 | [id-generator](https://github.com/Hochfrequenz/malo-id-generator)| 🌍  | MaLo / MeLo / NeLo / SR / TR | Autogenerierte zufällige IDs für Testzwecke | Go | 
-| [mako.bee]() 🐝                                                                                                             | 🌍  | MaKo allg.    | Backend zur Orchestrierung von Marktkommunikationsprozessen in Micro-Service Landschaften                        | C# ([ELSA](https://github.com/elsa-workflows/elsa-core))                       |
+| [edifact_mapper](https://github.com/Hochfrequenz/edifact_mapper)                                                            | 🔒  | EDIFACT       | Mapping und Konvertierung von EDIFACT-Nachrichten                                                                | Rust                                                                           |
+| [mako_prozesse](https://github.com/Hochfrequenz/mako_prozesse)                                                              | 🔒  | MaKo allg.    | Daten-Repo: Maschinenlesbare Beschreibungen von Marktkommunikationsprozessen                                     |                                                                                |
+| [mako.bee](https://github.com/Hochfrequenz/mako.bee) 🐝                                                                     | 🔒  | MaKo allg.    | Backend zur Orchestrierung von Marktkommunikationsprozessen in Micro-Service Landschaften                        | C# ([ELSA](https://github.com/elsa-workflows/elsa-core))                       |
 | [fristenkalender-generator](https://github.com/Hochfrequenz/fristenkalender_generator) | 🌍 | MaKo allg.    | Berechnet Fristen in der deutschen Energiewirtschaft | Python (package) |
 | [fristenkalender-functions](https://github.com/Hochfrequenz/fristenkalender-functions) | 🌍 | MaKo allg.    | API zur Berechnung von Fristen | Python (Azure Function) |
 | [fristenkalender-frontend](https://github.com/Hochfrequenz/fristenkalender-frontend) | 🌍 | MaKo allg.    | Frontend der [Hochfrequenz Fristenkalenders](https://fristenkalender.hochfrequenz.de) | Svelte |
@@ -194,6 +196,9 @@ flowchart LR
     tbc_net -->|HTTP| transformer
     tbc_py -->|HTTP| transformer
     tbc_ts -->|HTTP| transformer
+
+    %% Edifact Mapper (standalone)
+    edifact_mapper[edifact_mapper]:::lib
 
     %% Marktnachrichten-Dolmetscher
     tbc_ts --> mn_dolm

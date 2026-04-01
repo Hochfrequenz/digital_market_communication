@@ -197,9 +197,6 @@ flowchart LR
     tbc_py -->|HTTP| transformer
     tbc_ts -->|HTTP| transformer
 
-    %% Edifact Mapper (standalone)
-    edifact_mapper[edifact_mapper]:::lib
-
     %% Marktnachrichten-Dolmetscher
     tbc_ts --> mn_dolm
 

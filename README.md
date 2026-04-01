@@ -70,6 +70,8 @@ Legende:
 - 🟡 Flagge = MCP Server
 - Gestrichelt = archiviert oder potenzielle Zukunft
 
+> **Tipp:** Für eine Vollbildansicht den Mermaid-Code unten kopieren und in den [Mermaid Live Editor](https://mermaid.live) einfügen.
+
 ```mermaid
 flowchart LR
     classDef source fill:#fff3e0,stroke:#ef6c00,stroke-width:2px

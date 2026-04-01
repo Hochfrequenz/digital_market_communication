@@ -56,6 +56,177 @@ Bei Interesse an den nicht-öffentlichen/privaten 🔒 Repositories, bitte eine 
 | [fristenkalender-generator](https://github.com/Hochfrequenz/fristenkalender_generator) | 🌍 | MaKo allg.    | Berechnet Fristen in der deutschen Energiewirtschaft | Python (package) |
 | [fristenkalender-functions](https://github.com/Hochfrequenz/fristenkalender-functions) | 🌍 | MaKo allg.    | API zur Berechnung von Fristen | Python (Azure Function) |
 | [fristenkalender-frontend](https://github.com/Hochfrequenz/fristenkalender-frontend) | 🌍 | MaKo allg.    | Frontend der [Hochfrequenz Fristenkalenders](https://fristenkalender.hochfrequenz.de) | Svelte |
+## Zusammenhänge
+
+Das folgende Diagramm zeigt, wie die einzelnen Komponenten zusammenhängen.
+**Knoten** sind Daten (Repositories, externe Quellen, Frontends). **Kanten** (Pfeile) sind Tools, die Daten verarbeiten oder transportieren.
+
+Legende:
+- 🟠 Abgerundet = Externe Datenquelle
+- 🔵 Zylinder = Daten-Repository
+- 🟣 Doppelrahmen = Service/Backend
+- 🟢 Sechseck = Frontend
+- ⬜ Rechteck = Library/Package
+- 🟡 Flagge = MCP Server
+- Gestrichelt = archiviert oder potenzielle Zukunft
+
+> **Tipp:** Für eine Vollbildansicht den Mermaid-Code unten kopieren und in den [Mermaid Live Editor](https://mermaid.live) einfügen.
+
+```mermaid
+flowchart LR
+    classDef source fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    classDef repo fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    classDef service fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef frontend fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    classDef mcp fill:#fff8e1,stroke:#f9a825,stroke-width:2px
+    classDef lib fill:#fafafa,stroke:#9e9e9e,stroke-width:1px
+    classDef archived fill:#fafafa,stroke:#bdbdbd,stroke-width:1px,stroke-dasharray:5 5
+
+    %% ── External Sources ──
+    edi_energy([edi-energy.de]):::source
+    bdew_mako([bdew-mako.de]):::source
+    bnetz([bundesnetzagentur.de]):::source
+    holidays([python holidays]):::source
+    partners([Internal µServices &\nExternal Market Partners]):::source
+
+    %% ── Data Repositories ──
+    mirror[(edi_energy_mirror)]:::repo
+    xml_migs[(xml-migs-and-ahbs)]:::repo
+    mr_mig[(machine-readable\nMIGs)]:::repo
+    mr_ebd[(machine-readable\nEBDs)]:::repo
+    mr_ahb[(machine-readable\nAHBs)]:::archived
+    ahb_diffs[(AHB Diffs)]:::archived
+    edifact_tpl[(edifact-templates)]:::repo
+    mako_proz[(mako_prozesse)]:::repo
+    sqlite_db[(SQLite DB)]:::repo
+
+    %% ── EBD Toolchain ──
+    subgraph ebd_toolchain[ebd_toolchain]
+        ebdamame[ebdamame] --> rebdhuhn[rebdhuhn]
+    end
+
+    %% ── Services & Backends ──
+    ahbicht_fn[[ahbicht-functions]]:::service
+    transformer[[transformer.bee 🐝]]:::service
+    wanna_bee[[wanna.bee]]:::service
+    mako_bee[[mako.bee 🐝]]:::service
+    fk_fn[[fristenkalender-functions]]:::service
+
+    %% ── Libraries & Clients ──
+    ahbicht[ahbicht 🦅]:::lib
+    edi_lib[EDILibrary]:::lib
+    bo4e_net[BO4E-dotnet]:::lib
+    tbc_net[TransformerBeeClient.NET]:::lib
+    tbc_py[TransformerBeeClient.py]:::lib
+    tbc_ts[TransformerBeeClient.ts]:::lib
+    ahbicht_client[AhbichtClient.NET]:::lib
+    malo_mapper[MaLoIdentBo4eMapper]:::lib
+    bdew_dt[bdew-datetimes]:::lib
+    fk_gen[fristenkalender-generator]:::lib
+
+    %% ── MCP Servers ──
+    mcp_mako>mcp-bdew-mako]:::mcp
+    mcp_tbee>TransformerBee.mcp]:::mcp
+
+    %% ── Frontends ──
+    ahb_tab{{ahb-tabellen.hochfrequenz.de}}:::frontend
+    ahahnb{{bedingungsbaum.hochfrequenz.de}}:::frontend
+    ebd_fe{{ebd.hochfrequenz.de}}:::frontend
+    fk_fe{{fristenkalender.hochfrequenz.de}}:::frontend
+    mn_dolm{{marktnachrichten-dolmetscher}}:::frontend
+
+    %% ── ID Generators (free-floating) ──
+    subgraph id_gen[ID Generators · malo-id-generator]
+        direction TB
+        malo_id{{markt.lokations.id}}:::frontend
+        melo_id{{mess.lokations.id}}:::frontend
+        nelo_id{{netz.lokations.id}}:::frontend
+        tr_id{{technische.ressource.id}}:::frontend
+        sr_id{{steuerbare.ressource.id}}:::frontend
+    end
+
+    %% ── Standalone Model Packages ──
+    malo_py[malo-ident-python-models]:::lib
+    malo_net[malo-ident-net-models]:::lib
+    vzd_py[verzeichnisdienst-python-models]:::lib
+
+    %% ════════════════════════════════════════
+    %% EDGES
+    %% ════════════════════════════════════════
+
+    %% Document Scraping Pipeline
+    edi_energy -->|edi_energy_scraper| mirror
+    bdew_mako -->|manual download| xml_migs
+
+    %% MIG Processing
+    mirror -->|migmose| mr_mig
+
+    %% EBD Processing
+    mirror --> ebdamame
+    rebdhuhn --> mr_ebd
+    mr_ebd -->|git submodule| ebd_fe
+
+    %% AHB Processing (no longer in automated pipeline)
+    mirror -.->|"kohlrahbi 🥬 (manual, no pipeline)"| mr_ahb
+    mr_ahb -.->|"ahlbatross 🪿 (dead end)"| ahb_diffs
+
+    %% XML → SQLite → Consumers
+    xml_migs -->|fundamend| sqlite_db
+    sqlite_db -->|CI pipeline| ahb_tab
+    sqlite_db -->|CI pipeline| ahbicht_fn
+
+    %% AHBicht Chain
+    ahbicht -->|used internally| ahbicht_fn
+    ahbicht_fn -->|HTTP| ahahnb
+    ahbicht_client -->|HTTP| ahbicht_fn
+
+    %% Wanna.bee
+    xml_migs --> wanna_bee
+    ahbicht -->|used internally| wanna_bee
+    tbc_py --> wanna_bee
+    wanna_bee -.->|potential| mako_bee
+
+    %% Transformer.bee
+    xml_migs --> transformer
+    edifact_tpl --> transformer
+    edi_lib -->|used internally| transformer
+    bo4e_net --> transformer
+    tbc_net -->|HTTP| transformer
+    tbc_py -->|HTTP| transformer
+    tbc_ts -->|HTTP| transformer
+
+    %% Marktnachrichten-Dolmetscher
+    tbc_ts --> mn_dolm
+
+    %% Mako.bee
+    bo4e_net --> mako_bee
+    tbc_net --> mako_bee
+    malo_mapper --> mako_bee
+    partners <--> mako_bee
+
+    %% MaLo Ident → BO4E mapping
+    malo_net --> malo_mapper
+    malo_mapper --> bo4e_net
+
+    %% MCP Servers
+    sqlite_db --> mcp_mako
+    mr_ebd --> mcp_mako
+    mako_proz --> mcp_mako
+    mcp_mako -.->|HTTP| ahbicht_fn
+    tbc_py --> mcp_tbee
+
+    %% Mako Prozesse
+    bdew_mako -->|AI| mako_proz
+    bnetz -->|AI| mako_proz
+
+    %% Fristenkalender Chain
+    holidays --> bdew_dt --> fk_gen --> fk_fn --> fk_fe
+
+    %% Potential Future Connections
+    ahbicht_client -.->|potential future| transformer
+    ahbicht_client -.->|potential future| mako_bee
+```
+
 ## Hochfrequenz
 
 Die [Hochfrequenz Unternehmensberatung GmbH](https://www.hochfrequenz.de) hat ihren Sitz in Grünwald (nahe München), feste Büros in Berlin und Bremen und Home Offices in ganz

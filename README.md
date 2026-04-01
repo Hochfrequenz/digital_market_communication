@@ -76,13 +76,13 @@ Legende:
 
 ```mermaid
 flowchart LR
-    classDef source fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
-    classDef repo fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
-    classDef service fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    classDef frontend fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    classDef mcp fill:#fff8e1,stroke:#f9a825,stroke-width:2px
-    classDef lib fill:#fafafa,stroke:#9e9e9e,stroke-width:1px
-    classDef archived fill:#fafafa,stroke:#bdbdbd,stroke-width:1px,stroke-dasharray:5 5
+    classDef source fill:#e65100,stroke:#ff9800,stroke-width:2px,color:#fff
+    classDef repo fill:#0d47a1,stroke:#42a5f5,stroke-width:2px,color:#fff
+    classDef service fill:#6a1b9a,stroke:#ce93d8,stroke-width:2px,color:#fff
+    classDef frontend fill:#1b5e20,stroke:#66bb6a,stroke-width:2px,color:#fff
+    classDef mcp fill:#f57f17,stroke:#ffee58,stroke-width:2px,color:#000
+    classDef lib fill:#455a64,stroke:#90a4ae,stroke-width:1px,color:#fff
+    classDef archived fill:#616161,stroke:#9e9e9e,stroke-width:1px,color:#ccc,stroke-dasharray:5 5
 
     %% ── External Sources ──
     edi_energy([edi-energy.de]):::source

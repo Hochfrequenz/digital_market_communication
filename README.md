@@ -41,7 +41,7 @@ Bei Interesse an den nicht-öffentlichen/privaten 🔒 Repositories, bitte eine 
 | [EBD_amame](https://github.com/Hochfrequenz/ebdamame)                                                              | 🌍  | EBDs          | Scraping-Tool um docx-Dateien mit EBDs maschinenlesbar zu machen                                                 | Python ([python-docx](https://github.com/python-openxml/python-docx))          |
 | [rebdhuhn](https://github.com/Hochfrequenz/rebdhuhn)                                                            | 🌍  | EBDs          | Core-Logik, die EBD-Tabellen in maschinenlesbare Graphen/Bäume umwandelt                                         | Python ([networkx](https://networkx.org/)) + [PlantUML](https://plantuml.com/) |
 | [machine-readable_entscheidungsbaumdiagramme](https://github.com/Hochfrequenz/machine-readable_entscheidungsbaumdiagramme/) | 🌍  | EBDs          | Daten-Repo: Alle Entscheidungsbäume/Graphen, maschinenlesbar in verschiedenen Formaten (puml, dot, svg)          |                                                                                |
-| 🆕 [entscheidungsbaumdiagramm](https://github.com/Hochfrequenz/entscheidungsbaumdiagramm)| 🌍  | Entscheidungsbaumdiagramme | Neues Frontend für `entscheidungsbaum.hochfrequenz.de`| TS/Svelte |
+| 🆕 [entscheidungsbaumdiagramme](https://github.com/Hochfrequenz/entscheidungsbaumdiagramme)| 🌍  | Entscheidungsbaumdiagramme | Neues Frontend für `ebd.hochfrequenz.app`| TS/Svelte |
 | [machine-readable_anwendungshandbuecher](https://github.com/Hochfrequenz/machine-readable_anwendungshandbuecher)            | 🌍  | AHBs          | Daten-Repo: Alle Anwendungshandbücher, maschinenlesbar in verschiedenen Formaten                                 | kohlrahbi             
 | [machine-readable_message-implementation-guide](https://github.com/Hochfrequenz/machine-readable_message-implementation-guide)            | 🌍  | MIGs          | Daten-Repo: Alle MIGs, maschinenlesbar in verschiedenen Formaten                                 | migmose                                                                              |
 | [kohlr_AHB_i](https://github.com/Hochfrequenz/kohlrahbi) 🥬                                                                   | 🌍  | AHBs          | Scraping-Library für PDF- und DOCX-Anwendungshandbücher                      | Python ([python-docx](https://github.com/python-openxml/python-docx))          |
@@ -57,7 +57,7 @@ Bei Interesse an den nicht-öffentlichen/privaten 🔒 Repositories, bitte eine 
 | [mako.bee](https://github.com/Hochfrequenz/mako.bee) 🐝                                                                     | 🔒  | MaKo allg.    | Backend zur Orchestrierung von Marktkommunikationsprozessen in Micro-Service Landschaften                        | C# ([ELSA](https://github.com/elsa-workflows/elsa-core))                       |
 | [fristenkalender-generator](https://github.com/Hochfrequenz/fristenkalender_generator) | 🌍 | MaKo allg.    | Berechnet Fristen in der deutschen Energiewirtschaft | Python (package) |
 | [fristenkalender-functions](https://github.com/Hochfrequenz/fristenkalender-functions) | 🌍 | MaKo allg.    | API zur Berechnung von Fristen | Python (Azure Function) |
-| [fristenkalender-frontend](https://github.com/Hochfrequenz/fristenkalender-frontend) | 🌍 | MaKo allg.    | Frontend der [Hochfrequenz Fristenkalenders](https://fristenkalender.hochfrequenz.de) | Svelte |
+| [fristenkalender-frontend](https://github.com/Hochfrequenz/fristenkalender-frontend) | 🌍 | MaKo allg.    | Frontend der [Hochfrequenz Fristenkalenders](https://fristenkalender.hochfrequenz.app) | Svelte |
 ## Zusammenhänge
 
 Das folgende Diagramm zeigt, wie die einzelnen Komponenten zusammenhängen.
@@ -131,10 +131,10 @@ flowchart LR
     mcp_tbee>TransformerBee.mcp]:::mcp
 
     %% ── Frontends ──
-    ahb_tab{{ahb-tabellen.hochfrequenz.de}}:::frontend
-    ahahnb{{bedingungsbaum.hochfrequenz.de}}:::frontend
-    ebd_fe{{ebd.hochfrequenz.de}}:::frontend
-    fk_fe{{fristenkalender.hochfrequenz.de}}:::frontend
+    ahb_tab{{ahb-tabellen.hochfrequenz.app}}:::frontend
+    ahahnb{{bedingungsbaum.hochfrequenz.app}}:::frontend
+    ebd_fe{{ebd.hochfrequenz.app}}:::frontend
+    fk_fe{{fristenkalender.hochfrequenz.app}}:::frontend
     mn_dolm{{marktnachrichten-dolmetscher}}:::frontend
 
     %% ── ID Generators (free-floating) ──

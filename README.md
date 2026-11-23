@@ -57,7 +57,7 @@ Bei Interesse an den nicht-öffentlichen/privaten 🔒 Repositories, bitte eine 
 | [mako.bee](https://github.com/Hochfrequenz/mako.bee) 🐝                                                                     | 🔒  | MaKo allg.    | Backend zur Orchestrierung von Marktkommunikationsprozessen in Micro-Service Landschaften                        | C# ([ELSA](https://github.com/elsa-workflows/elsa-core))                       |
 | [fristenkalender-generator](https://github.com/Hochfrequenz/fristenkalender_generator) | 🌍 | MaKo allg.    | Berechnet Fristen in der deutschen Energiewirtschaft | Python (package) |
 | [fristenkalender-functions](https://github.com/Hochfrequenz/fristenkalender-functions) | 🌍 | MaKo allg.    | API zur Berechnung von Fristen | Python (Azure Function) |
-| [fristenkalender-frontend](https://github.com/Hochfrequenz/fristenkalender-frontend) | 🌍 | MaKo allg.    | Frontend der [Hochfrequenz Fristenkalenders](https://fristenkalender.hochfrequenz.de) | Svelte |
+| [fristenkalender-frontend](https://github.com/Hochfrequenz/fristenkalender-frontend) | 🌍 | MaKo allg.    | Frontend der [Hochfrequenz Fristenkalenders](https://fristenkalender.hochfrequenz.app) | Svelte |
 ## Zusammenhänge
 
 Das folgende Diagramm zeigt, wie die einzelnen Komponenten zusammenhängen.
@@ -131,10 +131,10 @@ flowchart LR
     mcp_tbee>TransformerBee.mcp]:::mcp
 
     %% ── Frontends ──
-    ahb_tab{{ahb-tabellen.hochfrequenz.de}}:::frontend
-    ahahnb{{bedingungsbaum.hochfrequenz.de}}:::frontend
-    ebd_fe{{ebd.hochfrequenz.de}}:::frontend
-    fk_fe{{fristenkalender.hochfrequenz.de}}:::frontend
+    ahb_tab{{ahb-tabellen.hochfrequenz.app}}:::frontend
+    ahahnb{{bedingungsbaum.hochfrequenz.app}}:::frontend
+    ebd_fe{{ebd.hochfrequenz.app}}:::frontend
+    fk_fe{{fristenkalender.hochfrequenz.app}}:::frontend
     mn_dolm{{marktnachrichten-dolmetscher}}:::frontend
 
     %% ── ID Generators (free-floating) ──
